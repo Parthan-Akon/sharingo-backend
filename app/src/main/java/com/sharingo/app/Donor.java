@@ -4,11 +4,26 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Donor {
-
+	
+	private int id;
+	private int inActive;
 	private String name;
 	private String address;
-	private int contactNumber;
+	private String contactNumber;
 	
+	
+	public int getInActive() {
+		return inActive;
+	}
+	public void setInActive(int inActive) {
+		this.inActive = inActive;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -21,10 +36,10 @@ public class Donor {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
-	public void setContactNumber(int contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 	
