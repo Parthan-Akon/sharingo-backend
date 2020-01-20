@@ -18,5 +18,5 @@ INSERT INTO donor (
  now()
 );
 
-SELECT COUNT(ID) INTO p_id FROM donor;
+SELECT LAST_INSERT_ID() INTO p_id;
 END

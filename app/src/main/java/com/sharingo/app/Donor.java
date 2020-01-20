@@ -10,8 +10,17 @@ public class Donor {
 	private String name;
 	private String address;
 	private String contactNumber;
+	private String dateOfRegis;
 	
 	
+	
+	
+	public String getDateOfRegis() {
+		return dateOfRegis;
+	}
+	public void setDateOfRegis(String dateOfRegis) {
+		this.dateOfRegis = dateOfRegis;
+	}
 	public int getInActive() {
 		return inActive;
 	}

@@ -13,17 +13,35 @@ import javax.json.JsonObject;
 
 public class DonorRepo {
 
+	private int id = 0;
+	private fetchType _fetchType;
 	DBConnect dbConnect = new DBConnect();
 	
+	enum fetchType {ALL, ID};
+
 	
 	public DonorRepo(){
 		
 	}
 	
-	public List<Donor> Fetch(){
+	public List<Donor> getDonorByID(int id){
+		this.id = id;
+		this._fetchType = fetchType.ID;
+		return fetch();
+	}
+	
+	public List<Donor> getDonorList(){
+		this._fetchType = fetchType.ALL;
+		return fetch();
+	}
+	
+	public List<Donor> fetch(){
 		String name = null;
 		PreparedStatement preparedStmt= null;
+		CallableStatement callableStatement = null;
 		Connection conn = dbConnect.getConnection();
+		String getQueryStatement;
+		
 		List<Donor> donorList = new ArrayList<Donor>();
 		
 		if(conn != null){
@@ -33,10 +51,21 @@ public class DonorRepo {
 		}
 		
 		try {
-			String getQueryStatement = "Select * from donor";
-			preparedStmt = conn.prepareStatement(getQueryStatement);
 			
-			ResultSet rs = preparedStmt.executeQuery();
+			
+			
+			switch(_fetchType){
+			case ID : getQueryStatement = "call sharingo.getDonorByID(?)";
+					callableStatement = conn.prepareCall(getQueryStatement);
+					callableStatement.setInt(1, this.id);
+					break;
+					
+			case ALL : getQueryStatement = "Select * from donor";
+					callableStatement = conn.prepareCall(getQueryStatement);
+					break;
+			}
+			
+			ResultSet rs =  callableStatement.executeQuery();
 			
 			while(rs.next()){
 				Donor donor = new Donor();
@@ -45,9 +74,12 @@ public class DonorRepo {
 				donor.setAddress(rs.getString("Address"));
 				donor.setContactNumber(rs.getString("Contact"));
 				donor.setInActive(rs.getInt("Inactive"));
+				donor.setDateOfRegis(rs.getString("DOR"));
+				
 				donorList.add(donor);
 				
 			}
+			
 			
 		} catch (SQLException e){
 			e.printStackTrace();
