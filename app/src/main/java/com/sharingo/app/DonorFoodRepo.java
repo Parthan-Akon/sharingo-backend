@@ -38,11 +38,13 @@ public class DonorFoodRepo {
 			while(rs.next()){
 				DonorFood donorFood = new DonorFood();
 				donorFood.setId(rs.getInt("ID"));
+				donorFood.setDonorId(rs.getInt("DonorID"));
 				donorFood.setName(rs.getString("Name"));
 				donorFood.setFoodCount(rs.getInt("FoodCount"));
 				donorFood.setFoodItems(rs.getString("FoodItems"));
 				donorFood.setServiceCharge(rs.getString("ServiceCharge"));
 				donorFood.setOperatorName(rs.getString("OperatorName"));
+				donorFood.setOperatorID(rs.getInt("OperatorID"));
 				donorFood.setCompleted(rs.getInt("Completed"));
 				
 				
@@ -80,7 +82,7 @@ public class DonorFoodRepo {
 			callableStatement2.setInt(2, inputData.getInt("foodCount"));
 			callableStatement2.setString(3, inputData.getString("foodItems"));
 			callableStatement2.setString(4, inputData.getString("serviceCharge"));
-			callableStatement2.setString(5, inputData.getString("operator"));
+			callableStatement2.setInt(5, inputData.getInt("operatorID"));
 			
 			callableStatement2.executeUpdate();
 			

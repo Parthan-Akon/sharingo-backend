@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.json.JsonObject;
+
 public class VolunteerRepo {
 
 	private fetchType _FetchType;
@@ -66,6 +68,26 @@ public class VolunteerRepo {
 		
 		
 		return volunteerList;
+	}
+	
+	public void saveVolunteer(JsonObject inputData){
+		Connection conn = dbConnect.getConnection();
+		CallableStatement callableStatement = null;
+		String getQueryStatement = null;
+		
+		try {
+			
+			getQueryStatement = "call addVolunteer(?,?)";
+			callableStatement = conn.prepareCall(getQueryStatement);
+			callableStatement.setString(1, inputData.getString("name"));
+			callableStatement.setString(2, inputData.getString("contact"));
+			
+			callableStatement.executeUpdate();
+			
+			System.out.println("Volunteer added!");
+		} catch(SQLException e){
+			e.printStackTrace();
+		}
 	}
 	
 }

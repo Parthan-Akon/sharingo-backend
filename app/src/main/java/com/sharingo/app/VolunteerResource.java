@@ -13,20 +13,23 @@ import javax.ws.rs.core.MediaType;
 @Path("volunteer")
 public class VolunteerResource {
 
+	VolunteerRepo volunteerRepo = new VolunteerRepo();	
+	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public List<Volunteer> getAllVolunteers(){
-		
-		VolunteerRepo volunteerRepo = new VolunteerRepo();		
+	public List<Volunteer> getAllVolunteers(){		
+			
 		return volunteerRepo.getVolunteerList();
 	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public List<Volunteer> saveVolunteers(JsonObject inputData) {
+	public JsonObject saveVolunteers(JsonObject inputData) {
+		
+		volunteerRepo.saveVolunteer(inputData);
 		
 		System.out.print(inputData);
-		return null;
+		return inputData;
 	}
 }
