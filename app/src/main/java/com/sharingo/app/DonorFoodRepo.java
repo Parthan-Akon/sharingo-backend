@@ -43,6 +43,8 @@ public class DonorFoodRepo {
 				donorFood.setFoodItems(rs.getString("FoodItems"));
 				donorFood.setServiceCharge(rs.getString("ServiceCharge"));
 				donorFood.setOperatorName(rs.getString("OperatorName"));
+				donorFood.setCompleted(rs.getInt("Completed"));
+				
 				
 				
 				foodList.add(donorFood);

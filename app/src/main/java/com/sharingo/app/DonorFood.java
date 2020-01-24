@@ -11,6 +11,8 @@ public class DonorFood {
 	private String foodItems;
 	private String serviceCharge;
 	private String operatorName;
+	private int completed;
+	
 	
 	
 	public String getName() {
@@ -50,6 +52,11 @@ public class DonorFood {
 	public void setOperatorName(String operatorName) {
 		this.operatorName = operatorName;
 	}
-	
+	public int getCompleted() {
+		return completed;
+	}
+	public void setCompleted(int completed) {
+		this.completed = completed;
+	}
 	
 }
