@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getCollectionByDonorID`(IN p_donorID INT(16))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getCollections`()
 BEGIN
 
 Select 
@@ -24,6 +24,6 @@ LEFT JOIN foodcallrecord ON collection.FoodDonorID = foodcallrecord.DonorID
 INNER JOIN volunteer ON volunteer.ID = collection.operatorID
 LEFT JOIN donor ON collection.FoodDonorID = donor.ID
 
-WHERE collection.FoodDonorID = p_donorID AND foodcallrecord.Inactive=0 AND Collection.Inactive=0;
+WHERE foodcallrecord.Inactive=0 AND Collection.Inactive=0;
 
 END
