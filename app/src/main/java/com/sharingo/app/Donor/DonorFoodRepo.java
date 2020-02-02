@@ -39,7 +39,7 @@ public class DonorFoodRepo {
 			
 			while(rs.next()){
 				DonorFood donorFood = new DonorFood();
-				donorFood.setId(rs.getInt("ID"));
+				donorFood.setfoodCallRecordId(rs.getInt("FoodCallRecordID"));
 				donorFood.setDonorId(rs.getInt("DonorID"));
 				donorFood.setName(rs.getString("Name"));
 				donorFood.setFoodCount(rs.getInt("FoodCount"));
@@ -48,6 +48,7 @@ public class DonorFoodRepo {
 				donorFood.setOperatorName(rs.getString("OperatorName"));
 				donorFood.setOperatorID(rs.getInt("OperatorID"));
 				donorFood.setCompleted(rs.getInt("Completed"));
+				donorFood.setSensCompleted(rs.getInt("SensCompleted"));
 				
 				
 				

@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class DonorFood {
 
-	private int id;
+	private int foodCallrecordID;
 	private int donorId;
 	private String name;		
 	private int foodCount;
@@ -14,6 +14,7 @@ public class DonorFood {
 	private int operatorID;
 	private String operatorName;
 	private int completed;
+	private int sensCompleted;
 	
 	
 	
@@ -24,11 +25,18 @@ public class DonorFood {
 	public void setOperatorName(String operatorName) {
 		this.operatorName = operatorName;
 	}
-	public int getId() {
-		return id;
+	
+	public int getSensCompleted() {
+		return sensCompleted;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setSensCompleted(int sensCompleted) {
+		this.sensCompleted = sensCompleted;
+	}
+	public int getfoodCallRecordId() {
+		return foodCallrecordID;
+	}
+	public void setfoodCallRecordId(int id) {
+		this.foodCallrecordID = id;
 	}
 	public String getName() {
 		return name;

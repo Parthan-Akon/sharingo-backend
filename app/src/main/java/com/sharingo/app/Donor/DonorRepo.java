@@ -1,5 +1,6 @@
 package com.sharingo.app.Donor;
 
+import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,6 +36,33 @@ public class DonorRepo {
 	public List<Donor> getDonorList(){
 		this._fetchType = fetchType.ALL;
 		return fetch();
+	}
+	
+	public byte[] getfeedback(){
+		CallableStatement callableStatement = null;
+		Connection conn = dbConnect.getConnection();
+		String getQueryStatement = "SELECT * FROM sharingo.feedback";
+		 byte[] imgData = null;
+		 Blob img = null;
+		
+		try {
+			
+			callableStatement = conn.prepareCall(getQueryStatement);
+			
+			ResultSet rs = callableStatement.executeQuery();
+			while(rs.next()){
+				
+				img = rs.getBlob("Signature");
+				imgData = img.getBytes(1, (int) img.length());
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return imgData;
+		
 	}
 	
 	public List<Donor> fetch(){

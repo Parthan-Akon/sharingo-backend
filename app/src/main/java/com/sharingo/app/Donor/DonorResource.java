@@ -1,6 +1,7 @@
 package com.sharingo.app.Donor;
 
 import java.io.InputStream;
+import java.sql.Blob;
 import java.util.List;
 
 import javax.json.JsonObject;
@@ -21,6 +22,16 @@ public class DonorResource {
 		DonorRepo donorRepo = new DonorRepo();
 		
 		return donorRepo.getDonorList();
+	}
+	
+	@GET
+	@Path("feedback")
+	@Produces(MediaType.APPLICATION_OCTET_STREAM)
+	public byte[] getfeedback(){
+		
+		DonorRepo obj = new DonorRepo();	
+		
+		return obj.getfeedback();
 	}
 	
 	@GET
