@@ -2,7 +2,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getFoodCallRecords`()
 BEGIN
 
 SELECT 
-foodcallrecord.ID,
+foodcallrecord.ID as FoodCallRecordID,
 DonorID as DonorID,
 donor.Name,
 FoodCount,
@@ -10,7 +10,8 @@ FoodItems,
 ServiceCharge,
 foodcallrecord.OperatorID,
 Volunteer.Name as OperatorName,
-ifnull(Completed,0) AS Completed
+ifnull(Completed,0) AS Completed,
+SensCompleted
 
 FROM 
 foodcallrecord 
