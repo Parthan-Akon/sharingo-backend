@@ -101,7 +101,7 @@ public class CollectionRepo {
 			String queryStatement = "call addCollection(?,?,?,?,?,?,?,?,?)";
 			callableStatement = conn.prepareCall(queryStatement);
 			callableStatement.setInt(1, inputData.getInt("donorID"));
-			callableStatement.setInt(2, inputData.getInt("id"));
+			callableStatement.setInt(2, inputData.getInt("foodCallRecordId"));
 			callableStatement.setString(3, inputData.getString("deliveredTime"));
 			callableStatement.setString(4, inputData.getString("pickupTime"));
 			callableStatement.setInt(5, inputData.getInt("servingTemp"));
