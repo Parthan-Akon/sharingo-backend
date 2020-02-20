@@ -10,6 +10,8 @@ public class Sensory {
 	private int temperature;
 	private String fitStatus;
 	private String acceptability;
+	
+	
 	public String getRecipeName() {
 		return recipeName;
 	}
