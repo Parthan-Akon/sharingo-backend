@@ -35,6 +35,16 @@ public class DonorResource {
 	}
 	
 	@GET
+	@Path("dashboard")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Dashboard getDashboardCount(){
+		
+		DonorFoodRepo obj = new DonorFoodRepo();
+		
+		return obj.FetchDashboardCount();
+	}
+	
+	@GET
 	@Path("{id}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<Donor> getDonorByID(@PathParam("id") int id){
